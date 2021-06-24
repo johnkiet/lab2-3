@@ -1,0 +1,39 @@
+﻿@model IEnumerable<lab2_3.Controllers.Book>
+
+@{
+    ViewBag.Title = "ListBooks";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ListBooks</h2>
+
+<p>
+    @Html.ActionLink("Create New", "CreateBook")
+</p>
+
+@foreach (var item in Model)
+{
+    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+        <div class="panel panel-default">
+            <div class="panel">
+                <p>
+                    <img src="/@item.Image" />
+                </p>
+                <p>
+                    <strong>Title: </strong> @item.Title
+                </p>
+                <p>
+                    <strong>Author: </strong> @item.Author
+                </p>
+            </div>
+            <div class="panel-footer clearfix">
+                @Html.ActionLink("Detail", "Detail", new { id = @item.ID }, new { @class = "btn btn-default" })
+                @Html.ActionLink("Edit", "Edit", new { id = @item.ID }, new { @class = "btn btn-default" })
+                @Html.ActionLink("Delete", "Delete", new { id = @item.ID }, new { @class = "btn btn-default" })
+
+            </div>
+        </div>
+    </div>
+}
+
+</table>
